@@ -25,17 +25,6 @@ public class Teacher {
     //图片路径
     private String photo;
 
-    //老师用户id
-    private long userID;
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
-    }
-
     public long getTeacherId() {
         return teacherId;
     }
