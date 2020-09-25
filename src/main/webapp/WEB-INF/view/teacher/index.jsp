@@ -43,7 +43,7 @@
                     layer.open({
                         type:2,  //基本层类型
                         title:'修改密码',
-                        content:'/modifyPwd?userId=' + $("#userId").val(),
+                        content:'/modifyPwdForward?userId=' + $("#userId").val(),
                         area: ['450px', '350px'],   //设置弹框高度
                         shadeClose:true //点击是否关闭遮罩
                     })

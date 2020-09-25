@@ -67,8 +67,8 @@ public class TeacherController {
         return "teacher/addStudent";
     }
 
-    @RequestMapping("/modifyPwd")
-    public String modifyPwd(String userId, Model model) {
+    @RequestMapping("/modifyPwdForward")
+    public String modifyPwdForward(String userId, Model model) {
         long uId = Long.parseLong(userId);
         User user = userService.getUserByUserId(uId);
         model.addAttribute("user", user);
@@ -86,7 +86,7 @@ public class TeacherController {
 
     @RequestMapping("/toLogin")
     public String toLogin() {
-        return "redirect:/WEB-INF/view/admin/login.html";
+        return "forward:/WEB-INF/view/login.html";
     }
 
     @RequestMapping("/loginCheck")
@@ -290,6 +290,17 @@ public class TeacherController {
             } else {
                 return "修改评价失败";
             }
+        }
+    }
+
+    @RequestMapping("/modifyPwd")
+    @ResponseBody
+    public String modifyPwd(String userId, String newPwd) {
+        long uId = Long.parseLong(userId);
+        if (userService.modifyPwdByUserId(uId, newPwd)) {
+            return "修改密码成功";
+        } else {
+            return "修改密码失败";
         }
     }
 }
