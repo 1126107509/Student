@@ -2,23 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IMenuDao">
-    <resultMap id="basemenu" type="menu">
-        <id column="menuId" property="menuId"></id>
-        <result column="parentMenuId" property="parentMenuId"></result>
-        <result column="menuName" property="menuName"></result>
-        <result column="imageShow" property="imageShow"></result>
-        <collection property="sonMenus" column="menuId" ofType="menu"
-                     select="listSonMenu"></collection>
-    </resultMap>
-
-
-    <select id="listMainMenu" resultMap="basemenu" >
-        select menuId,parentMenuId,menuName,imageShow  from menu where menuType = 0 and parentMenuId = 0
-    </select>
-
-    <select id="listSonMenu" resultMap="basemenu" >
-        select menuId,parentMenuId,menuName,imageShow  from menu where menuType = 0 and parentMenuId = #{menuId}
-    </select>
-
-
 </mapper>

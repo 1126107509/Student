@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IClassDao">
-    <!--Class getClassByCId(long cId);-->
+    <!--z
+        Class getClassByCId(long cId);-->
     <select id="getClassByCId" resultType="Class">
         SELECT
             classId,

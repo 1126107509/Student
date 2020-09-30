@@ -23,7 +23,8 @@
             s.deptid
     </sql>
 
-    <!--List<Student> getAllStuByTeacher(@Param("teacherId") long teacherId,
+    <!--z
+        List<Student> getAllStuByTeacher(@Param("teacherId") long teacherId,
                                          @Param("stuName") String stuName),
                                          @Param("classState") long classState;-->
     <select id="getAllStuByTeacher" resultType="Student">
@@ -43,7 +44,8 @@
             AND s.stuName LIKE concat('%', #{stuName}, '%')
     </select>
 
-    <!--List<Student> getStuByTeacher(@Param("page") int page,
+    <!--z
+        List<Student> getStuByTeacher(@Param("page") int page,
                                   @Param("limit") int limit,
                                   @Param("teacherId") long teacherId,
                                   @Param("stuName") String stuName),
@@ -108,7 +110,8 @@
         </collection>
     </resultMap>
 
-    <!--Student getStuByStuId(long stuId);-->
+    <!--z
+        Student getStuByStuId(long stuId);-->
     <select id="getStuByStuId" resultMap="StuScoEva">
         <include refid="baseSql"></include>,
         sc.stuId as sId,

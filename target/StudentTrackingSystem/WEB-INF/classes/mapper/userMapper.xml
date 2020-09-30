@@ -15,7 +15,8 @@
             peopleId
     </sql>
 
-    <!--long getUserByLogin(@Param("userName") String userName, @Param("password") String password);-->
+    <!--z
+        long getUserByLogin(@Param("userName") String userName, @Param("password") String password);-->
     <select id="getUserByLogin" resultType="long">
         SELECT
             userId
@@ -26,7 +27,8 @@
         AND pwd = #{password}
     </select>
 
-    <!--User getUserByUserId(long userId);-->
+    <!--z
+        User getUserByUserId(long userId);-->
     <select id="getUserByUserId" resultType="User">
         <include refid="baseSql"></include>
         FROM
@@ -35,7 +37,8 @@
         userId = #{userId}
     </select>
 
-    <!--boolean modifyPwdByUserId(@Param("userId") long userId, @Param("newPwd") String newPwd);-->
+    <!--z
+        boolean modifyPwdByUserId(@Param("userId") long userId, @Param("newPwd") String newPwd);-->
     <update id="modifyPwdByUserId">
         UPDATE `user`
         SET pwd = #{newPwd}

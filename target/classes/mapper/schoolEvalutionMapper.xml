@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.ISchoolEvaluationDao">
-    <!--boolean addSchoolEvaluate(@Param("stuId") long stuId,
+    <!--z
+        boolean addSchoolEvaluate(@Param("stuId") long stuId,
                               @Param("evaluatePerson") String evaluatePerson,
                               @Param("evaluateScore") double evaluateScore,
                               @Param("evaluateContent") String evaluateContent);-->
@@ -17,7 +18,8 @@
             (#{stuId}, #{evaluatePerson}, #{evaluateScore}, #{evaluateContent})
     </insert>
 
-    <!--boolean updateSchoolEvaluate(@Param("evaluateId") long evaluateId,
+    <!--z
+        boolean updateSchoolEvaluate(@Param("evaluateId") long evaluateId,
                                  @Param("stuId") long stuId,
                                  @Param("evaluatePerson") String evaluatePerson,
                                  @Param("evaluateScore") double evaluateScore,
