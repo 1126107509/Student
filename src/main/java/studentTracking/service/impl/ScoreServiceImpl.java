@@ -3,7 +3,6 @@ package studentTracking.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studentTracking.dao.IScoreDao;
-import studentTracking.model.Score;
 import studentTracking.service.IScoreService;
 
 import java.util.List;
@@ -15,13 +14,13 @@ public class ScoreServiceImpl implements IScoreService {
     private IScoreDao scoreDao;
 
     /**
-     * 根据用户名和密码查询个人成绩
-     * @param userName 用户名
-     * @param pwd 密码
-     * @return 各科成绩
+     * 林崑鹏
+     * 根据peopleId查询个人成绩
+     * @param peopleId 用户名
+     * @return 学生的各科成绩
      */
     @Override
-    public List<Map<String, Object>> getPersonScores(String userName, String pwd) {
-        return scoreDao.getPersonScores(userName, pwd);
+    public List<Map<String, Object>> getPersonScores(long peopleId) {
+        return scoreDao.getPersonScores(peopleId);
     }
 }

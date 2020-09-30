@@ -3,22 +3,4 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IUserDao">
 
-    <!--Long getUser(@Param("userName") String userName,@Param("pwd") String pwd)
-    根据用户和密码查询用户的id-->
-    <select id="getUser" resultType="User">
-        SELECT
-            userId,
-            userName,
-            pwd,
-            phone,
-            email,
-            note,
-            flag,
-            loginTime
-        FROM
-            `user`
-        WHERE
-            userName = #{userName}
-        AND pwd = #{pwd}
-    </select>
 </mapper>

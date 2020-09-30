@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentTracking.dao.IJobEvaluationDao">
+    <!--List<JobEvaluation> getEvaluateByStuId(long stuId)-->
+    <!--根据stuId查询该学生的所有评论信息-->
+    <!--林崑鹏-->
+    <select id="getEvaluateByStuId" resultType="JobEvaluation">
+        SELECT
+            j.stuId,
+            j.dateId
+        FROM
+            jobevaluation j
+        WHERE
+            j.stuId = #{stuId}
+        ORDER BY
+            j.dateId
+    </select>
+    <!--boolean insertCommand(JobEvaluation jobEvaluation)-->
+    <!--插入学生评论-->
+    <!--林崑鹏-->
+    <insert id="insertCommand">
+        INSERT INTO jobevaluation (
+            dateId,
+            stuId,
+            optionId,
+            evaluatePerson,
+            evaluateScore,
+            totalScore,
+            jobEvaluateContent
+        )
+        VALUES
+            (
+                #{dateId},
+                #{stuId},
+                #{optionId},
+                #{evaluatePerson},
+                #{evaluateScore},
+                #{totalScore},
+                #{jobEvaluateContent}
+            )
+        </insert>
+</mapper>

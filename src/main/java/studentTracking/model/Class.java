@@ -23,6 +23,8 @@ public class Class {
      */
     private List<Student> students;
 
+    public Class() {
+    }
 
     public Class(String className, String teacherId, List<Student> students) {
         this.className = className;
@@ -62,13 +64,5 @@ public class Class {
         this.className = className;
     }
 
-    @Override
-    public String toString() {
-        return "Class{" +
-                "classId=" + classId +
-                ", className='" + className + '\'' +
-                ", teacherId='" + teacherId + '\'' +
-                ", students=" + students +
-                '}';
-    }
+
 }

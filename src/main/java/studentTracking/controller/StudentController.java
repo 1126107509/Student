@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import studentTracking.model.Student;
 import studentTracking.service.IScoreService;
 import studentTracking.service.IStudentService;
-
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 学生控制器层
+ */
 @Controller
 public class StudentController {
     @Autowired
@@ -23,29 +25,30 @@ public class StudentController {
     }
 
     /**
+     * 林崑鹏
      * 查询到学生的个人信息返回到前台页面
-     * @param model
+     * @param model 用于将student对象传至目标对象
      * @return 学生个人信息展示页面
      */
     @RequestMapping("/getStuInformation")
     public String getStuInformation(Model model) {
-        String userName = "林崑鹏";
-        String pwd = "666666";
-        Student student = studentService.getStuInform(userName,pwd);
+        long peopleId = 1;
+        Student student = studentService.getStuInform(peopleId);
+        System.out.println("student = " + student);
         model.addAttribute("student",student);
         return "student/stuShow";
     }
 
     /**
-     * 根据用户名和密码查询个人成绩信息
+     * 林崑鹏
+     * 根据用户表的peopleId查询个人成绩信息
      * @param request 学生个人成绩
      * @return
      */
     @RequestMapping("/getStuScore")
     public String getStuScore(HttpServletRequest request) {
-        String userName = "林崑鹏";
-        String pwd = "666666";
-        request.setAttribute("stuScore",scoreService.getPersonScores(userName,pwd));
+        long peopleId = 1;
+        request.setAttribute("stuScore",scoreService.getPersonScores(peopleId));
         return "forward:stuScore";
     }
 }

@@ -5,7 +5,6 @@
     <sql id="baseSql">
         SELECT
             s.stuId,
-            s.userId,
             s.stuName,
             s.sex,
             s.nation,
@@ -14,64 +13,59 @@
             s.marry,
             s.telephone,
             s.idcard,
+            s.email,
             s.university,
             s.major,
             s.photo,
             s.note,
             s.state,
-            s.classid,
-            s.deptid
+            s.classId,
+            s.deptId
     </sql>
-
-    <!--List<Student> getAllStuByTeacher(long teacherId);-->
-    <select id="getAllStuByTeacher" resultType="Student">
-        <include refid="baseSql"></include>
-        FROM
-        student s
-        LEFT JOIN class c ON s.classId = c.classId
-        LEFT JOIN `user` u ON u.userId = #{teacherId}
-    </select>
-
-    <!--List<Student> getStuByTeacher(@Param("page") int page, @Param("limit") int limit, @Param("teacherId") long teacherId);-->
-    <select id="getStuByTeacher" resultMap="StuAndSco">
-        <include refid="baseSql"></include>,
-        sc.courseId,
-        sc.score
-        FROM
-        student s
-        LEFT JOIN class c ON s.classId = c.classId
-        LEFT JOIN `user` u ON u.userId = #{teacherId}
-        LEFT JOIN score sc ON sc.stuId = s.stuId
-        LIMIT #{page}, #{limit}
-    </select>
-    <resultMap id="StuAndSco" type="Student">
-        <id column="stuId" property="stuId"></id>
-        <result column="stuName" property="stuName"></result>
-        <result column="sex" property="sex"></result>
-        <result column="nation" property="nation"></result>
-        <result column="birthday" property="birthday"></result>
-        <result column="birthPlace" property="birthPlace"></result>
-        <result column="marry" property="marry"></result>
-        <result column="telephone" property="telephone"></result>
-        <result column="idCard" property="idCard"></result>
-        <result column="university" property="university"></result>
-        <result column="major" property="major"></result>
-        <result column="photo" property="photo"></result>
-        <result column="note" property="note"></result>
-        <result column="state" property="state"></result>
-        <result column="classId" property="classId"></result>
-        <result column="deptId" property="deptId"></result>
-        <collection property="scoreList" javaType="list" ofType="Score">
-            <id column="stuId" property="stuId"></id>
-            <result column="courseId" property="courseId"></result>
-            <result column="score" property="score"></result>
-        </collection>
-    </resultMap>
-    <!-- Student getStuInform(@Param("userName") String userName,@Param("pwd") String pwd);
-    根据用户名和密码查询学生的个人信息-->
+    <!--Student getStuInform(long peopleId)-->
+    <!--根据peopleid查询个人学生信息-->
     <select id="getStuInform" resultType="Student">
         <include refid="baseSql"></include>
-        from student s join user u on s.userId = u.userId
-        where u.userName = #{userName} and u.pwd = #{pwd}
+        FROM student s
+        WHERE stuId = #{peopleId}
     </select>
+    <!-- List<Student> getStu(long deptId)
+    <根据deptId查询学生个人信息-->
+    <!--林崑鹏-->
+    <select id="getStu" resultType="Student">
+        <include refid="baseSql"></include>
+        from student s
+        where s.deptId = #{deptId}
+    </select>
+
+    <!--List<Student> getStuByDeptId(@Param("page") int page, @Param("limit") int limit, @Param("deptId") long deptId)-->
+    <!--根据部门id查询所有学生的姓名和毕业班级-->
+    <!--林崑鹏-->
+    <select id="getStuByDeptId" resultMap="stuList">
+        SELECT
+            s.stuId,
+            s.stuName,
+            s.deptId,
+            s.sex,
+            c.className
+        FROM
+            student s
+        JOIN class c ON s.classId = c.classId
+        WHERE
+            s.deptId = #{deptId}
+        <if test="stuName != null">
+           AND s.stuName LIKE concat('%',#{stuName},'%')
+        </if>
+        LIMIT #{page}, #{limit}
+    </select>
+    <resultMap id="stuList" type="Student">
+        <id column="stuId" property="stuId"></id>
+        <result column="stuName" property="stuName"></result>
+        <result column="classId" property="classId"></result>
+        <result column="deptId" property="deptId"></result>
+        <result column="sex" property="sex"></result>
+        <collection property="aClass" javaType="Class">
+            <result column="className" property="className"></result>
+        </collection>
+    </resultMap>
 </mapper>

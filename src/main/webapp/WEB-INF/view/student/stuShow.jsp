@@ -14,36 +14,36 @@
 </head>
 <body>
     <div>
-        <table class="layui-table" lay-even lay-skin="nob">
+        <table class="layui-table" lay-even lay-skin="nob" >
             <colgroup>
-                <col width="150">
                 <col width="200">
-                <col>
+                <col width="200">
+                <col width="200">
             </colgroup>
-            <thead align="center">
+            <thead>
                 <tr>
-                    <th colspan="3" style="align-content: center">个人基本信息</th>
+                    <th colspan="3" style="text-align: center"><span style="font-size: 20px">个人基本信息</span></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>姓名:${student.stuName}</td>
-                    <td>性别:${student.sex}</td>
-                    <td>出生日期:${student.birthday}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">姓名:</span>${student.stuName}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">性别:</span>${student.sex}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">出生日期:</span>${student.birthday}</td>
                 </tr>
                 <tr>
-                    <td>电话:${student.telephone}</td>
-                    <td>邮箱:</td>
-                    <td>身份证号:${student.idCard}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">电话:</span>${student.telephone}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">邮箱:</span>${student.email}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">身份证号:</span>${student.idCard}</td>
                 </tr>
                 <tr>
-                    <td>民族:${student.nation}</td>
-                    <td>籍贯:${student.birthPlace}</td>
-                    <td>婚姻状态:${student.marry}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">民族:</span>${student.nation}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">籍贯:</span>${student.birthPlace}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">婚姻状态:</span>${student.marry}</td>
                 </tr>
                 <tr>
-                    <td>学校:${student.university}</td>
-                    <td>专业:${student.major}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">学校:</span>${student.university}</td>
+                    <td><span style="font-size: 15px;font-weight: bold">专业:</span>${student.major}</td>
                     <td></td>
                 </tr>
             </tbody>

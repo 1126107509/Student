@@ -80,17 +80,46 @@ public class Student {
      */
     private String email;
 
-    private long userID;
+    /**
+     * 学生班期信息
+     */
+    private List<EvaluateDate> evaluateDates;
+
+    /**
+     * 学生工作评价列表
+     */
+    private List<JobEvaluation> jobEvaluationList;
+
+    /**
+     * 学生班级信息
+     */
+    private Class aClass;
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
+    }
+
+    public List<JobEvaluation> getJobEvaluationList() {
+        return jobEvaluationList;
+    }
+
+    public void setJobEvaluationList(List<JobEvaluation> jobEvaluationList) {
+        this.jobEvaluationList = jobEvaluationList;
+    }
+
+    public List<EvaluateDate> getEvaluateDates() {
+        return evaluateDates;
+    }
+
+    public void setEvaluateDates(List<EvaluateDate> evaluateDates) {
+        this.evaluateDates = evaluateDates;
+    }
 
     public Student() {
-    }
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
     }
 
     public String getEmail() {
@@ -235,5 +264,32 @@ public class Student {
 
     public void setScoreList(List<Score> scoreList) {
         this.scoreList = scoreList;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stuId=" + stuId +
+                ", stuName='" + stuName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", birthPlace='" + birthPlace + '\'' +
+                ", marry='" + marry + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", university='" + university + '\'' +
+                ", major='" + major + '\'' +
+                ", photo='" + photo + '\'' +
+                ", note='" + note + '\'' +
+                ", state='" + state + '\'' +
+                ", classId=" + classId +
+                ", deptId=" + deptId +
+                ", scoreList=" + scoreList +
+                ", email='" + email + '\'' +
+                ", evaluateDates=" + evaluateDates +
+                ", jobEvaluationList=" + jobEvaluationList +
+                ", aClass=" + aClass +
+                '}';
     }
 }

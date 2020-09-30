@@ -5,29 +5,38 @@ import org.springframework.stereotype.Service;
 import studentTracking.model.Student;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IStudentService {
-    /**
-     * 根据老师id查询所属学生信息
-     * @param teacherId 老师id
-     * @return 学生信息列表
-     */
-    List<Student> getAllStuByTeacher(long teacherId);
+
+
+
 
     /**
-     * 根据老师id查询所属学生信息
+     * 林崑鹏
+     * 根据用户表里peopleId查询单个学生信息
+     * @param peopleId 用户表的peopleid
+     * @return 查询出的单个学生的所有信息
+     */
+    Student getStuInform(long peopleId);
+
+    /**
+     * 林崑鹏
+     * 获取学生信息，
+     * @param deptId 部门id
+     * @return 学生列表
+     */
+    List<Student> getStu(long deptId);
+
+    /**
+     * 林崑鹏
+     * 根据部门编号获取员工信息和相应评价
      * @param page 页码
-     * @param limit 每页条数
-     * @param teacherId 老师id
-     * @return 学生信息列表
-     */
-    List<Student> getStuByTeacher(int page, int limit, long teacherId);
-
-    /**
-     * 根据用户名和密码查询单个学生信息
-     * @param userName 用户名
-     * @Param pwd 用户密码
+     * @param limit 每页信息条数
+     * @param deptId 部门编号
      * @return
      */
-    Student getStuInform(String userName,String pwd);
+    List<Student> getStuByDeptId(@Param("page") int page, @Param("limit") int limit, @Param("deptId") long deptId,@Param("stuName")String stuName);
+
+
 }

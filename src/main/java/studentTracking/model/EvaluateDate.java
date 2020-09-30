@@ -30,4 +30,6 @@ public class EvaluateDate {
     public void setDateName(String dateName) {
         this.dateName = dateName;
     }
+
+
 }

@@ -11,11 +11,11 @@ import java.util.Map;
  */
 public interface IScoreDao {
     /**
-     * 根据用户名和密码查询个人成绩
-     * @param userName 用户名
-     * @param pwd 密码
+     * 林崑鹏
+     * 根据people查询个人成绩
+     * @param peopleId 用户名
      * @return 学生的各科成绩
      */
-    List<Map<String,Object>> getPersonScores(@Param("userName")String userName,@Param("pwd")String pwd);
+    List<Map<String,Object>> getPersonScores(long peopleId);
 
 }

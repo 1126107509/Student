@@ -23,18 +23,17 @@
             </colgroup>
             <thead align="center">
                 <tr>
-                    <th colspan>科目</th>
-                    <th colspan>成绩</th>
+                    <th colspan style="font-size: 17px">科目</th>
+                    <th colspan style="font-size: 17px">成绩</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${requestScope.stuScore}" var="map">
                     <tr>
-                        <td>${map.courseName}</td>
-                        <td>${map.score}</td>
+                        <td style="font-size: 15px">${map.courseName}</td>
+                        <td style="font-size: 15px">${map.score}</td>
                     </tr>
                 </c:forEach>
-
             </tbody>
         </table>
     </div>

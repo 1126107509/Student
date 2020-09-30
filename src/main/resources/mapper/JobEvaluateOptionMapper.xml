@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentTracking.dao.IJobEvaluateOptionDao">
+    <!--List<JobEvaluateOption> getAllOption()-->
+    <!--获得所有的评分项，并按照id排序-->
+    <!--林崑鹏-->
+    <select id="getAllOption" resultType="JobEvaluateOption">
+        SELECT
+            j.optionId,
+            j.optionName,
+            j.optionState
+        FROM
+            jobevaluateoption j
+        ORDER BY
+            j.optionId
+    </select>
+</mapper>

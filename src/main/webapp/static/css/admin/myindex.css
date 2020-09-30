@@ -1,0 +1,103 @@
+
+.layui-logo {
+    position: relative;
+}
+
+.home {
+    position: absolute;
+    left: 18px;
+    top: 0px;
+    display: block;
+}
+
+
+.unhover .hover-noChange {
+    background-color: #8E8E8E;
+    color: #FFFFFF;
+}
+
+
+.font-color1 {
+    color: #FFFFFF;
+}
+
+.layui-layout-right {
+    position: absolute !important;
+    right: 51px;
+    top: 0;
+}
+
+
+.layui-side-menu .layui-nav .layui-nav-item a {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 48px;
+    padding-right: 30px;
+}
+
+
+#img {
+    width: 218px;
+    height: 130px;
+    position: relative;
+}
+
+#img div:first-child {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    position: absolute;
+    left: 67px;
+    top: 35px;
+
+}
+
+#img div:first-child img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+}
+
+#logo {
+    display: none;
+}
+
+.welcome {
+    width: 176px;
+    height: 14px;
+    position: absolute;
+    left: 33px;
+    bottom: -20px;
+}
+
+.welcome span {
+    font-size: 12px;
+}
+
+#time {
+    padding-right: 17px;
+}
+
+#time a {
+    font-style: italic;
+    font-size: 15px;
+    font-weight: lighter;
+    font-family: "Times New Roman";
+    letter-spacing: 2px;
+    color: rgba(11, 119, 50, 0.9);
+}
+
+
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+}
+
+.layadmin-header {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 0;
+    border-radius: 0;
+}

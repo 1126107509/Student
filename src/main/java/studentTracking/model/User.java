@@ -9,6 +9,10 @@ public class User {
      */
     private long userId;
     /**
+     * 老师或者学生的id
+     */
+    private long peopleId;
+    /**
      * 用户姓名
      */
     private String userName;
@@ -30,7 +34,7 @@ public class User {
      */
     private int power;
     /**
-     * 标识
+     * 标识 0管理员 1老师 2学生
      */
     private int flag;
     /**
@@ -38,6 +42,16 @@ public class User {
      */
     private String loginTime;
 
+    public User() {
+    }
+
+    public long getPeopleId() {
+        return peopleId;
+    }
+
+    public void setPeopleId(long peopleId) {
+        this.peopleId = peopleId;
+    }
 
     public long getUserId() {
         return userId;

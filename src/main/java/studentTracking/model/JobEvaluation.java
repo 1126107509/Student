@@ -33,6 +33,19 @@ public class JobEvaluation {
      */
     private String jobEvaluateContent;
 
+    public JobEvaluation() {
+    }
+
+    public JobEvaluation(long dateId, long stuId, long optionId, String evaluatePerson, double evaluateScore, double totalScore, String jobEvaluateContent) {
+        this.dateId = dateId;
+        this.stuId = stuId;
+        this.optionId = optionId;
+        this.evaluatePerson = evaluatePerson;
+        this.evaluateScore = evaluateScore;
+        this.totalScore = totalScore;
+        this.jobEvaluateContent = jobEvaluateContent;
+    }
+
     public long getDateId() {
         return dateId;
     }

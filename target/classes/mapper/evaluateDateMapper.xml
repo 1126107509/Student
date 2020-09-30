@@ -2,5 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IEvaluateDateDao">
-
+    <!--List<EvaluateDate> getAllDate()-->
+    <!--查询所有的时间节点-->
+    <!--林崑鹏-->
+    <select id="getAllDate" resultType="EvaluateDate">
+        SELECT
+            e.dateName,e.dateId
+        FROM
+            evaluatedate e
+        ORDER BY
+            e.dateId
+    </select>
 </mapper>

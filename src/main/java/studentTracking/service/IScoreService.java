@@ -8,11 +8,10 @@ import java.util.Map;
 
 public interface IScoreService {
     /**
-     * 根据用户名和密码查询个人成绩
-     * @param userName 用户名
-     * @param pwd 密码
+     * 根据peopleId查询个人成绩
+     * @param peopleId 用户名
      * @return 学生的各科成绩
      */
-    List<Map<String,Object>> getPersonScores(String userName,String pwd);
+    List<Map<String,Object>> getPersonScores(long peopleId);
 
 }
