@@ -5,4 +5,4 @@
 # IntelliJ project files
 
 *.iml
-target
+target/classes
