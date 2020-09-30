@@ -10,6 +10,7 @@ public class SchoolEvaluationServiceImpl implements ISchoolEvaluationService {
     @Autowired
     private ISchoolEvaluationDao schoolEvaluationDao;
     /**
+     * z
      * 添加评价信息
      * @param stuId           学生id
      * @param evaluatePerson  评价人
@@ -23,6 +24,7 @@ public class SchoolEvaluationServiceImpl implements ISchoolEvaluationService {
     }
 
     /**
+     * z
      * 修改评价信息
      * @param evaluateId      评价id
      * @param stuId           学生id

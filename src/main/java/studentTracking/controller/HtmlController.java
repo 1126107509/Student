@@ -13,10 +13,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HtmlController {
-
-    @RequestMapping("/go")
-    public String goAdminIndex () {
-       return "forward:/WEB-INF/view/admin/index.html";
-    }
-
 }

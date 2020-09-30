@@ -13,6 +13,7 @@ public class ScoreServiceImpl implements IScoreService {
     @Autowired
     private IScoreDao scoreDao;
     /**
+     * z
      * 添加成绩
      * @param stuId    学生id
      * @param courseId 课程id
@@ -25,6 +26,7 @@ public class ScoreServiceImpl implements IScoreService {
     }
 
     /**
+     * z
      * 更新成绩
      * @param stuId    学生id
      * @param courseId 课程id

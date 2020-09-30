@@ -23,19 +23,22 @@
             s.deptid
     </sql>
 
-    <!--List<Student> getAllStuByTeacher(@Param("teacherId") long teacherId, @Param("stuName") String stuName);-->
+    <!--List<Student> getAllStuByTeacher(@Param("teacherId") long teacherId,
+                                         @Param("stuName") String stuName),
+                                         @Param("classState") long classState;-->
     <select id="getAllStuByTeacher" resultType="Student">
         <include refid="baseSql"></include>
         FROM
             student s
             WHERE
-            s.classId = (
+            s.classId IN (
             SELECT
             classId
             FROM
             class c
             WHERE
             c.teacherId = #{teacherId}
+            AND c.state = #{classState}
             )
             AND s.stuName LIKE concat('%', #{stuName}, '%')
     </select>
@@ -43,7 +46,8 @@
     <!--List<Student> getStuByTeacher(@Param("page") int page,
                                   @Param("limit") int limit,
                                   @Param("teacherId") long teacherId,
-                                  @Param("stuName") String stuName);-->
+                                  @Param("stuName") String stuName),
+                                  @Param("classState") long classState;-->
     <select id="getStuByTeacher" resultMap="StuScoEva">
         <include refid="baseSql"></include>,
         sc.stuId as sId,
@@ -59,13 +63,14 @@
             LEFT JOIN score sc ON sc.stuId = s.stuId
             LEFT JOIN schoolEvaluation sch ON s.stuId = sch.stuId
             WHERE
-            s.classId = (
+            s.classId IN (
             SELECT
             classId
             FROM
             class c
             WHERE
             c.teacherId = #{teacherId}
+            AND c.state = #{classState}
             )
             AND s.stuName LIKE concat('%', #{stuName}, '%')
             LIMIT #{page},#{limit}

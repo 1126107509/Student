@@ -16,17 +16,4 @@ import java.util.List;
  */
 @Controller
 public class Administrators {
-
-    @Autowired
-    private IMenuService menuService;
-
-    @RequestMapping("/menu")
-    @ResponseBody
-    public String showMenu() {
-        List<Menu> menus = menuService.listMenu();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", JSONArray.fromObject(menus));
-        System.out.println(JSONArray.fromObject(menus));
-        return jsonObject.toString();
-    }
 }

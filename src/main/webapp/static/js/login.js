@@ -137,14 +137,14 @@ $(function () {
             $('.name_err_msg').html('用户名不能为空');
             $('#name_err_msg').css('visibility', 'visible')
             $(this).select();
-        } else if (username.length < 4) {
-            /*  alert("用户名长度最低4位");*/
+        } /*else if (username.length < 4) {
+            /!*  alert("用户名长度最低4位");*!/
 
             $(this).parent().css('border-bottom-color', 'red');
             $('.name_err_msg').html('用户名长度最低4位');
             $('#name_err_msg').css('visibility', 'visible')
             $(this).select();
-        } else {
+        }*/ else {
             $(this).parent().css('border-bottom-color', '#cccccc');
             $('#name_err_msg').css('visibility', 'hidden')
 

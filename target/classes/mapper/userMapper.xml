@@ -2,5 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IUserDao">
+    <sql id="baseSql">
+        SELECT
+            userId,
+            userName,
+            pwd,
+            phone,
+            email,
+            power,
+            flag,
+            loginTime,
+            peopleId
+    </sql>
 
+    <!--long getUserByLogin(@Param("userName") String userName, @Param("password") String password);-->
+    <select id="getUserByLogin" resultType="long">
+        SELECT
+            userId
+        FROM
+            `user`
+        WHERE
+            userName = #{userName}
+        AND pwd = #{password}
+    </select>
+
+    <!--User getUserByUserId(long userId);-->
+    <select id="getUserByUserId" resultType="User">
+        <include refid="baseSql"></include>
+        FROM
+        `user`
+        WHERE
+        userId = #{userId}
+    </select>
+
+    <!--boolean modifyPwdByUserId(@Param("userId") long userId, @Param("newPwd") String newPwd);-->
+    <update id="modifyPwdByUserId">
+        UPDATE `user`
+        SET pwd = #{newPwd}
+        WHERE
+            userId = #{userId}
+    </update>
 </mapper>

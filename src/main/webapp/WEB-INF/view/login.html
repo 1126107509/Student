@@ -101,7 +101,7 @@
                         <td>
                             <img src="../../static/images/pwd.png"
                                  alt="">
-                            <input name="password" type="text" placeholder="请输入您的密码"
+                            <input name="password" type="password" placeholder="请输入您的密码"
                                    style="border:none;outline: none">
                         </td>
                     </tr>
@@ -125,7 +125,6 @@
                         <td>请使用chrome、IE10+浏览器</td>
                     </tr>
                 </table>
-
             </form>
         </div>
         <div id="phone">
@@ -140,8 +139,6 @@
                     <li><img src="../../static/images/help.png" alt=""></li>
                 </ul>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -150,36 +147,35 @@
 <script>
 
     $(function () {
-
-
         //给form绑定一个回车事件
         $('#login').keydown(function (args) {
             if (args.keyCode === 13) {
                 login();
             }
-        })
+        });
 
         $('#submit').click(function () {
             login();
-        })
+        });
 
         function login() {
-            var username = $('input[name=username]').val();
+            var userName = $('input[name=username]').val();
             var password = $('input[name=password]').val();
             $.ajax({
-                url: '',
+                url: 'loginCheck',
                 type: 'post',
-                dateType: 'json',
-                sunccess: function (data) {
-
+                data:{
+                    userName: userName,
+                    password: password
+                },
+                success: function (data) {
+                    location.href = "loginJudge?userId=" + data;
                 },
                 error: function () {
-
+                    alert("用户名或密码错误")
                 }
             })
-
         }
-
     })
 </script>
 </body>

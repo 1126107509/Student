@@ -25,6 +25,19 @@ public class Teacher {
     //图片路径
     private String photo;
 
+    public Teacher() {
+    }
+
+    public Teacher(long teacherId, String tname, String sex, String birthday, String phone, String idCard, String photo) {
+        this.teacherId = teacherId;
+        this.tname = tname;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.idCard = idCard;
+        this.photo = photo;
+    }
+
     public long getTeacherId() {
         return teacherId;
     }
