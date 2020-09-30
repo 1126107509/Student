@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+}
+
+#contain {
+    width: 100%;
+<<<<<<< HEAD
+    height: 100%;
+}
+
+#headline {
+    background-image: url("../../../static/images/bgcommmon.png");
+=======
+   /* height: 100%;*/
+}
+
+#headline {
+    background-image: url("../../images/bg.png");
+>>>>>>> 80e2e02452eb31c1b7c41ee5bf0a6490a284277d
+    background-repeat: repeat-x;
+    height: 40px;
+}
+
+#main {
+    margin-top: 27px;
+}
+
+#headline p {
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    padding-left: 30px;
+}
+
+.mywidth {
+    width: 260px;
+}
+
+.mywidth2 {
+    width: 460px;
+}
+
+.mywidth3 {
+    width: 300px;
+}
+
+.mywidth31 {
+    width: 350px;
+}
+
+.mywidth4 {
+    width: 730px;
+    height: 80px;
+}
+
+.mywidth5 {
+
+    min-height: 70px;
+}
+
+.mywidth6 {
+    width: 730px;
+    height: 170px;
+}
+
+.mywidth7 {
+    min-height: 180px;
+}
+.mywidth8 {
+    width: 730px;
+}
+
+.font {
+    font-size: 16px;
+}
+.margin1{
+    margin: 40px 0px;
+}
+.marginr{
+    margin-right: 15%;
+    margin-left: 18%;
+}
+
+.layui-input-block {
+    margin-left: 142px;
+    min-height: 36px;
+}
+
+.layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 100px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 80e2e02452eb31c1b7c41ee5bf0a6490a284277d

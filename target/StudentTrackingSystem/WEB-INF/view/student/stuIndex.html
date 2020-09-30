@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>学生索引页面</title>
+    <link rel="stylesheet" href="../../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../static/layui/css/admin1.css">
+    <link rel="stylesheet" href="../../../static/css/admin/index.css">
+    <script src="../../../static/js/jquery3.3.1.js"></script>
+<!--
+    <script src="../../../static/js/admin/index.js"></script>
+-->
+    <style>
+        #time {
+            padding-right: 17px;
+        }
+
+        #time a {
+            font-style: italic;
+            font-size: 17px;
+            font-weight: lighter;
+            font-family: "Times New Roman";
+            letter-spacing: 2px;
+            color: rgba(11, 119, 50, 0.9);
+        }
+
+        #parent {
+            margin-left: 5px;
+        }
+
+
+    </style>
+</head><!--layadmin-side-shrink-->
+<body id="LAY_app" class="">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                <a href="javascript:;" layadmin-event="flexible" title="菜单伸缩">
+                    <i class="layui-icon layui-icon-shrink-right " id="LAY_app_flexible"></i>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" id="time">
+                <a>
+                </a>
+
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">修改密码</a></dd>
+                    <dd><a href="">注销账户</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 侧边菜单 -->
+    <div class="layui-side layui-side-menu">
+
+        <div class="layui-side-scroll">
+
+            <div id="img">
+                <div><!--<img src="../../../static/images/defaultl.png" alt="">-->
+                    <img src="http://t.cn/RCzsdCq" alt="">
+                </div>
+                <div class="welcome"><span>欢迎使用金桥学员跟踪系统</span></div>
+            </div>
+            <div class="layui-logo" lay-href="" id="logo">
+                <i class="layui-icon layui-icon-friends" id="homePage"></i>
+            </div>
+
+            <!--右侧侧边栏-->
+            <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
+                lay-filter="layadmin-system-side-menu">
+                <li data-name="user" class="layui-nav-item">
+                    <a href="/getStuInformation;" lay-tips="用户" lay-direction="2" target="main_iframe">
+                        <i class="layui-icon layui-icon-user"></i>
+                        <cite>个人信息</cite>
+                    </a>
+                </li>
+                <li data-name="user" class="layui-nav-item">
+                    <a href="/getStuScore" lay-tips="表单" lay-direction="2" target="main_iframe">
+                        <i class="layui-icon layui-icon-form"></i>
+                        <cite>成绩查询</cite>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+
+
+        <div class="layadmin-tabsbody-item layui-show">
+            <div class="layui-card layadmin-header">
+                <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                    <a lay-href="">主页</a><span lay-separator="">/</span>
+                    <a><cite>用户</cite></a><span lay-separator="">/</span>
+                    <a><cite>学生</cite></a>
+                </div>
+            </div>
+            <div class="layui-fluid">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+
+                        <iframe id="parent" src="/getStuInformation" frameborder="0"
+                                scrolling="no" name="main_iframe"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="layui-footer">
+        &lt;!&ndash; 底部固定区域 &ndash;&gt;
+        © layui.com - 底部固定区域
+    </div>-->
+</div>
+
+
+<script src="../../../static/layui/layui.all.js"></script>
+
+<script>
+
+    /*获取系统当前时间*/
+    function getTime() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        var day = date.getDate();
+        if (day < 10) {
+            day = '0' + day;
+        }
+        var hours = date.getHours();
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+        var minutes = date.getMinutes();
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        var seconds = date.getSeconds();
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        var str = year + '/' + month + '/' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        $('#time a').html(str)
+    }
+
+    getTime();
+    setInterval(getTime, 1000);
+
+
+    var width = $('.layui-card-body').css('width');
+    var height = $('.layui-show').css('height');
+
+    /* console.log(width + '--' + height)*/
+    $('iframe').css('width', width);
+    $('iframe').css('height', height);
+    $($('#parent').contents()[0].body).css('width', width);
+    $($('#parent').contents()[0].body).css('height', height);
+
+
+    $(function () {
+
+        /*点击图片返回初始页面*/
+        $("#homePage").click(function () {
+            location.reload()
+        });
+
+        $('#parent').css('height','500px');
+
+        $('#LAY_app_flexible').click(function () {
+            $('#LAY_app').toggleClass('layadmin-side-shrink');
+            $('.home').toggleClass('home-actice');
+
+            if ($('.layadmin-side-shrink').length == 0) {
+                $(this).removeClass('layui-icon-spread-left').addClass('layui-icon-shrink-right');
+                $('#img').show();
+                $('#logo').hide()
+
+            } else {
+                $(this).removeClass('layui-icon-shrink-right').addClass('layui-icon-spread-left');
+                $('#img').hide();
+                $('#logo').show()
+            }
+        })
+
+
+        layui.use(['element', 'table'], function () {
+            var element = layui.element;
+            var table = layui.table;
+
+        });
+
+
+        $('#LAY_app_flexible').click(function () {
+
+            //已经展开 1246px--190px  1086px
+            if ($('.layadmin-side-shrink').length == 1) {
+
+                var width = parseFloat($('.layui-card-body').css('width')) + 160 + 'px';
+                var height = parseFloat($('.layui-card-body').css('height')) - 200 + 'px';
+                $('#parent').css('width', width);
+                /*$('#parent').css('height', '440px');*/
+                /*  width = parseFloat(width) - 28 + 'px';*/
+
+
+                $($('#parent').contents()[0].getElementById('main')).css('width', width);
+               /* $($('#parent').contents()[0].getElementById('contain')).css('width', width);*/
+                $($('#parent').contents()[0].getElementsByTagName('body')).css('width', width);
+                $($('#parent').contents()[0].getElementById('main')).css('height', height);
+
+            } else {
+                var width = parseFloat($('.layui-card-body').css('width')) - 160 + 'px';
+                var height = parseFloat($('.layui-card-body').css('height')) - 200 + 'px';
+                $('#parent').css('width', width);
+
+                /*  width = parseFloat(width) - 28 + 'px';*/
+                $($('#parent').contents()[0].getElementById('main')).css('width', width);
+               /* $($('#parent').contents()[0].getElementById('contain')).css('width', width);*/
+                $($('#parent').contents()[0].getElementsByTagName('body')).css('width', width);
+                $($('#parent').contents()[0].getElementById('main')).css('height', height);
+            }
+        })
+    })
+
+</script>
+
+
+</body>
+</html>

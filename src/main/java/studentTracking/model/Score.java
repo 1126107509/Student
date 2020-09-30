@@ -17,6 +17,15 @@ public class Score {
      */
     private double score;
 
+    public Score() {
+    }
+
+    public Score(long stuId, long courseId, double score) {
+        this.stuId = stuId;
+        this.courseId = courseId;
+        this.score = score;
+    }
+
     public long getStuId() {
         return stuId;
     }

@@ -12,6 +12,11 @@ html, body {
 
 #headline {
     background-image: url("../../../static/images/bgcommmon.png");
+   /* height: 100%;*/
+}
+
+#headline {
+    background-image: url("../../images/bg.png");
     background-repeat: repeat-x;
     height: 40px;
 }
@@ -92,6 +97,3 @@ html, body {
     line-height: 20px;
     text-align: right;
 }
-
-
-

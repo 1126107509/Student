@@ -28,8 +28,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(long teacherId, String tname, String sex, String birthday, String phone,
-                   String idCard, String photo, long userID) {
+    public Teacher(long teacherId, String tname, String sex, String birthday, String phone, String idCard, String photo) {
         this.teacherId = teacherId;
         this.tname = tname;
         this.sex = sex;
@@ -37,29 +36,6 @@ public class Teacher {
         this.phone = phone;
         this.idCard = idCard;
         this.photo = photo;
-        this.userID = userID;
-    }
-
-    public Teacher(long teacherId, String tname, String sex, String birthday, String phone,
-                   String idCard, String photo) {
-        this.teacherId = teacherId;
-        this.tname = tname;
-        this.sex = sex;
-        this.birthday = birthday;
-        this.phone = phone;
-        this.idCard = idCard;
-        this.photo = photo;
-    }
-
-    //老师用户id
-    private long userID;
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
     }
 
     public long getTeacherId() {
@@ -116,19 +92,5 @@ public class Teacher {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "teacherId=" + teacherId +
-                ", tname='" + tname + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", phone='" + phone + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", photo='" + photo + '\'' +
-                ", userID=" + userID +
-                '}';
     }
 }

@@ -42,6 +42,7 @@ public class User {
      */
     private String loginTime;
 
+
     public User() {
     }
 

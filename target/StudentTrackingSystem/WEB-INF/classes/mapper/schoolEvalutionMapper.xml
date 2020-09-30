@@ -2,5 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.ISchoolEvaluationDao">
+    <!--z
+        boolean addSchoolEvaluate(@Param("stuId") long stuId,
+                              @Param("evaluatePerson") String evaluatePerson,
+                              @Param("evaluateScore") double evaluateScore,
+                              @Param("evaluateContent") String evaluateContent);-->
+    <insert id="addSchoolEvaluate">
+        INSERT INTO schoolevaluation (
+            stuId,
+            evaluatePerson,
+            evaluateScore,
+            evaluateContent
+        )
+        VALUES
+            (#{stuId}, #{evaluatePerson}, #{evaluateScore}, #{evaluateContent})
+    </insert>
 
+    <!--z
+        boolean updateSchoolEvaluate(@Param("evaluateId") long evaluateId,
+                                 @Param("stuId") long stuId,
+                                 @Param("evaluatePerson") String evaluatePerson,
+                                 @Param("evaluateScore") double evaluateScore,
+                                 @Param("evaluateContent") String evaluateContent);-->
+    <update id="updateSchoolEvaluate">
+        UPDATE schoolevaluation
+        SET stuId = #{stuId},
+         evaluatePerson = #{evaluatePerson},
+         evaluateScore = #{evaluateScore},
+         evaluateContent = #{evaluateContent}
+        WHERE
+            evaluateId = #{evaluateId}
+    </update>
 </mapper>

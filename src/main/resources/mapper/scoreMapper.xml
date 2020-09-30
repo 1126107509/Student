@@ -2,20 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.IScoreDao">
+    <!--z
+        boolean addScore(long stuId, long courseId, double score);-->
+    <insert id="addScore">
+        INSERT INTO score (stuId, courseId, score)
+        VALUES
+            (#{stuId}, #{courseId}, #{score})
+    </insert>
+
+    <!--z
+        boolean updateScore(@Param("stuId") long stuId, @Param("courseId") long courseId, @Param("score") double score);-->
+    <update id="updateScore">
+        UPDATE score
+        SET score = #{score}
+        WHERE
+            stuId = #{stuId}
+        AND courseId = #{courseId}
+    </update>
+
     <!--Map<String, List> getPersonScores(@Param("userName")String userName,@Param("pwd")String pwd)
-    根据peopleId查询学生个人的成绩
-    林崑鹏-->
+   根据peopleId查询学生个人的成绩
+   林崑鹏-->
     <select id="getPersonScores" resultMap="scoreList">
         SELECT
-            /*课程名称*/
-            c.courseName courseName,
-            /*单科成绩*/
-            s.score score
+        /*课程名称*/
+        c.courseName courseName,
+        /*单科成绩*/
+        s.score score
         FROM
-            score s
+        score s
         JOIN course c ON s.courseId = c.courseId
         WHERE
-            s.stuId = #{peopleId}
+        s.stuId = #{peopleId}
     </select>
     <resultMap id="scoreList" type="map">
         <result column="courseName" property="courseName"></result>
