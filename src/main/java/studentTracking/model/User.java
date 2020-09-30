@@ -106,4 +106,11 @@ public class User {
         this.loginTime = loginTime;
     }
 
+    public long getPeopleId() {
+        return peopleId;
+    }
+
+    public void setPeopleId(long peopleId) {
+        this.peopleId = peopleId;
+    }
 }

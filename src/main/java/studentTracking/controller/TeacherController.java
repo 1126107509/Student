@@ -8,19 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import studentTracking.dao.IScoreDao;
 import studentTracking.model.*;
 import studentTracking.model.Class;
 import studentTracking.model.Student;
 import studentTracking.service.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
-@SessionAttributes({"courseList"})
 public class TeacherController {
     @Autowired
     private IStudentService studentService;
@@ -34,11 +34,15 @@ public class TeacherController {
     private ISchoolEvaluationService schoolEvaluationService;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private ITeacherService teacherService;
 
     @RequestMapping("/studentList")
-    public String studentList(String classState, Model model) {
+    public String studentList(String classState, String teacherId, String teacherName, Model model) {
         List<Course> courseList = courseService.getAllCourse();
         model.addAttribute("courseList", courseList);
+        model.addAttribute("teacherId", teacherId);
+        model.addAttribute("teacherName", teacherName);
         if ("0".equals(classState)) {
             model.addAttribute("classState", "0");
         } else {
@@ -121,10 +125,10 @@ public class TeacherController {
     public Object getStuByTeacher(int page, int limit, String teacherId, String stuName, String classState) {
         //将前台数据进行处理
         long tId = 0;
-        if (teacherId == null) {
+        if ("".equals(teacherId)) {
             tId = 0;
         } else {
-            tId = Integer.parseInt(teacherId);
+            tId = Long.parseLong(teacherId);
         }
         if (stuName == null) {
             stuName = "";
@@ -149,7 +153,8 @@ public class TeacherController {
             map.put("birthPlace", studentListByPage.get(i).getBirthPlace());
             map.put("className", classService.getClassByCId(studentListByPage.get(i).getClassId()).getClassName());
             if (studentListByPage.get(i).getSchoolEvaluation() == null
-                    || studentListByPage.get(i).getSchoolEvaluation().getEvaluateContent() == "") {
+                    || "".equals(studentListByPage.get(i).getSchoolEvaluation().getEvaluateContent())
+                    || studentListByPage.get(i).getSchoolEvaluation().getEvaluateScore() == 0) {
                 map.put("schoolEvaluation", "未评价");
             } else {
                 map.put("schoolEvaluation", "已评价");
@@ -183,7 +188,7 @@ public class TeacherController {
      * @return
      */
     @RequestMapping("/getStuByStuId")
-    public String getStuByStuId(String stuId, Model model) {
+    public String getStuByStuId(String stuId, String teacherName, Model model) {
         long sId = Integer.parseInt(stuId);
         //学生信息
         Student student = studentService.getStuByStuId(sId);
@@ -210,6 +215,10 @@ public class TeacherController {
         //培训学校评价信息
         SchoolEvaluation schoolEvaluation = student.getSchoolEvaluation();
         model.addAttribute("school", schoolEvaluation);
+        //教师姓名
+        model.addAttribute("teacherName", teacherName);
+        //课程名称
+        model.addAttribute("courseList", courseList);
         return "forward:studentInfo";
     }
 
@@ -302,5 +311,58 @@ public class TeacherController {
         } else {
             return "修改密码失败";
         }
+    }
+
+    /**
+     * 根据教师id获得教师信息进行转发
+     * @param teacherId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/getTeacherById")
+    public String getTeacherById(String teacherId, Model model) {
+        long tId = Long.parseLong(teacherId);
+        Teacher teacher = teacherService.getTeacherById(tId);
+        model.addAttribute("teacher", teacher);
+        return "forward:teacherInfo";
+    }
+
+    @RequestMapping("/updateTeacherById")
+    @ResponseBody
+    public String updateTeacherById(Teacher teacher) {
+        if (teacherService.updateTeacherById(teacher)) {
+            return "修改成功";
+        } else {
+            return "修改失败";
+        }
+    }
+
+    @RequestMapping("/saveTeacherImg")
+    @ResponseBody
+    public String saveTeacherImg(MultipartFile file, HttpServletRequest request) {
+        //创建目录用来存放上传文件
+        String path = request.getServletContext().getRealPath("/static/img");
+        File fileDir = new File(path);
+        //文件不存在或者不是文件夹则创建
+        if (!fileDir.exists() || !fileDir.isDirectory()) {
+            fileDir.mkdir();
+        }
+        //获得文件原名称
+        String oldName = file.getOriginalFilename();
+        //生成唯一的新名字
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        String newName = uuid + "-" + oldName;
+        //根据文件名称和路径创建文件对象
+        File img = new File(path, newName);
+        //保存文件
+        try {
+            file.transferTo(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("img", "img/" + newName);
+        return jsonObject.toString();
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IScoreService {
     /**
+     * z
      * 添加成绩
      * @param stuId 学生id
      * @param courseId 课程id
@@ -16,6 +17,7 @@ public interface IScoreService {
     boolean addScore(long stuId, long courseId, double score);
 
     /**
+     * z
      * 更新成绩
      * @param stuId 学生id
      * @param courseId 课程id

@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../../../static/layui/css/layui.css">
     <script src="../../../static/layui/layui.js"></script>
     <style>
+        body {
+            background-image: url("../../../static/images/overlap.png");
+        }
         td {
             text-align: center;
         }
@@ -18,6 +21,9 @@
         textarea {
             border: none;
         }
+        .fontStyle {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -27,50 +33,50 @@
         <input type="text" id="evaluateId" value="${requestScope.school.evaluateId}" hidden>
         <table style="width: 80%" class="layui-table">
             <tr>
-                <td>姓名</td>
+                <td class="fontStyle">姓名</td>
                 <td>${requestScope.student.stuName}</td>
-                <td>性别</td>
+                <td class="fontStyle">性别</td>
                 <td>${requestScope.student.sex}</td>
-                <td>民族</td>
+                <td class="fontStyle">民族</td>
                 <td>${requestScope.student.nation}</td>
-                <td rowspan="4">照片</td>
+                <td rowspan="4"><img src="../../../static/img/photo1.jpg" alt="" height="155" width="115"></td>
             </tr>
             <tr>
-                <td>出生年月</td>
+                <td class="fontStyle">出生年月</td>
                 <td>${requestScope.student.birthday}</td>
-                <td>籍贯</td>
+                <td class="fontStyle">籍贯</td>
                 <td>${requestScope.student.birthPlace}</td>
-                <td>婚否</td>
+                <td class="fontStyle">婚否</td>
                 <td>${requestScope.student.marry}</td>
             </tr>
             <tr>
-                <td>练习电话</td>
+                <td class="fontStyle">练习电话</td>
                 <td colspan="2">${requestScope.student.telephone}</td>
-                <td>身份证号码</td>
+                <td class="fontStyle">身份证号码</td>
                 <td colspan="2">${requestScope.student.idCard}</td>
             </tr>
             <tr>
-                <td>毕业学校</td>
+                <td class="fontStyle">毕业学校</td>
                 <td colspan="2">${requestScope.student.university}</td>
-                <td>专业</td>
+                <td class="fontStyle">专业</td>
                 <td colspan="2">${requestScope.student.major}</td>
             </tr>
             <tr>
-                <td>备注</td>
+                <td class="fontStyle">备注</td>
                 <td colspan="6">${requestScope.student.note}</td>
             </tr>
         </table>
 
         <table style="width: 80%" class="layui-table">
             <tr>
-                <td colspan="10">培训学校评价</td>
+                <td colspan="${requestScope.courseList.size() + 4}" class="fontStyle">培训学校评价</td>
             </tr>
             <tr>
-                <td rowspan="2">培训学校</td>
-                <td rowspan="2">班期</td>
-                <td rowspan="2">评价人</td>
-                <td colspan="${requestScope.courseList.size()}">培训期间测试成绩</td>
-                <td rowspan="2">整体评价分数</td>
+                <td rowspan="2" class="fontStyle">培训学校</td>
+                <td rowspan="2" class="fontStyle">班期</td>
+                <td rowspan="2" class="fontStyle">评价人</td>
+                <td colspan="${requestScope.courseList.size()}" class="fontStyle">培训期间测试成绩</td>
+                <td rowspan="2" class="fontStyle">整体评价分数</td>
             </tr>
             <tr>
                 <c:forEach var="course" items="${requestScope.courseAndScore[1]}">
@@ -78,9 +84,9 @@
                 </c:forEach>
             </tr>
             <tr>
-                <td>学习评价</td>
+                <td class="fontStyle">学习评价</td>
                 <td>${requestScope.classInfo.className}</td>
-                <td id="evaluatePerson">${requestScope.school.evaluatePerson}</td>
+                <td id="evaluatePerson">${requestScope.teacherName}</td>
                 <c:forEach var="score" items="${requestScope.courseAndScore[2]}">
                     <td>${score}</td>
                 </c:forEach>
@@ -94,7 +100,7 @@
                 </td>
             </tr>
             <tr>
-                <td>评价(包括主要优点及缺点)</td>
+                <td class="fontStyle">评价(包括主要优点及缺点)</td>
                 <td colspan="${requestScope.courseList.size() + 3}">
                     <textarea name="evaluateContent" id="evaluateContent" cols="120" rows="4">${requestScope.school.evaluateContent}</textarea>
                 </td>

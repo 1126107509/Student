@@ -2,5 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="studentTracking.dao.ITeacherDao">
+    <!--z
+        Teacher getTeacherById(long teacherId);-->
+    <select id="getTeacherById" resultType="Teacher">
+        SELECT
+            teacherId,
+            tname,
+            sex,
+            birthday,
+            phone,
+            idCard,
+            photo
+        FROM
+            teacher
+        WHERE
+            teacherId = #{teacherId}
+    </select>
 
+    <!--z
+        boolean updateTeacherById(Teacher teacher);-->
+    <update id="updateTeacherById">
+        UPDATE teacher
+        SET tname = #{tname},
+         sex = #{sex},
+         birthday = #{birthday},
+         phone = #{phone},
+         idCard = #{idCard},
+         photo = #{photo}
+        WHERE
+            teacherId = #{teacherId}
+    </update>
 </mapper>

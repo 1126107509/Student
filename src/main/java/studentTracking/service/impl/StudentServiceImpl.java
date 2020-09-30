@@ -14,6 +14,7 @@ public class StudentServiceImpl implements IStudentService {
     private IStudentDao studentDao;
 
     /**
+     * z
      * 根据老师id和学生姓名查询学生信息
      * @param teacherId  老师id
      * @param stuName    学生姓名
@@ -26,6 +27,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     /**
+     * z
      * 根据老师id和学生姓名分页查询所属学生信息
      * @param page       页码
      * @param limit      每页条数
@@ -40,6 +42,7 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     /**
+     * z
      * 根据学生id查询学生信息
      * @param stuId 学生id
      * @return 学生信息

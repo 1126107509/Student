@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface IScoreDao {
     /**
+     * z
      * 添加成绩
      * @param stuId 学生id
      * @param courseId 课程id
@@ -19,6 +20,7 @@ public interface IScoreDao {
     boolean addScore(@Param("stuId") long stuId, @Param("courseId") long courseId, @Param("score") double score);
 
     /**
+     * z
      * 更新成绩
      * @param stuId 学生id
      * @param courseId 课程id

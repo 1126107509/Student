@@ -13,6 +13,7 @@ public class UserServiceImpl implements IUserService {
 
 
     /**
+     * z
      * 根据用户名和密码获得登录用户id
      * @param userName 用户名
      * @param password 密码
@@ -24,6 +25,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
+     * z
      * 根据用户id获取用户信息
      * @param userId 用户id
      * @return 用户信息
@@ -34,6 +36,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
+     * z
      * 根据用户id修改密码
      * @param userId 用户id
      * @param newPwd 新密码

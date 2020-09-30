@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ISchoolEvaluationService {
     /**
+     * z
      * 添加评价信息
      * @param stuId 学生id
      * @param evaluatePerson 评价人
@@ -17,6 +18,7 @@ public interface ISchoolEvaluationService {
                               @Param("evaluateContent") String evaluateContent);
 
     /**
+     * z
      * 修改评价信息
      * @param evaluateId 评价id
      * @param stuId 学生id
